@@ -34,6 +34,8 @@
 * delete_volume()
 * list_volumes()
 
+## Swift API
+
 ## Glance API
 * upload_image()
 * list_images()
