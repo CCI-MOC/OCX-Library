@@ -15,7 +15,7 @@
 * create_vm()
 * default_create_vm()
 * delete_vm()
-* attach_volume() {not sure if here or neutron?}
+* attach_volume() {not sure if here or cinder?}
 * list_project_vms()
 
 ## Neutron API
