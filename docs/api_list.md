@@ -22,7 +22,7 @@
 * create_vm()
 * default_create_vm()
 * delete_vm()
-* attach_volume() {not sure if here or nova?}
+* attach_volume() 
 
 ### Query API 
 * list_project_vms()
@@ -63,6 +63,8 @@
 ### Query API
 * list_containers()
 * list_objects()
+
+## Swift API
 
 ## Glance API
 ### Operational API 
