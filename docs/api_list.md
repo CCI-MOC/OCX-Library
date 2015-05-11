@@ -3,19 +3,22 @@
 #### Operational API 
 * create_service()
 * delete_service()
+* create_endpoint()
+* delete_endpoint()
 
 #### Query API 
 * list_services()
+* show_service()
 * list_free_services()
 
 ### Keystone API
 #### Operational API 
 * get_token()
+* add_user_to_project()
+* remove_user_from_project() 
 
 #### Query API 
 * list_projects()
-* add_user_to_project()
-* remove_user_from_project() 
 
 ### Nova API
 #### Operational API 
@@ -23,9 +26,12 @@
 * default_create_vm()
 * delete_vm()
 * attach_volume() 
+* create_firewall_rule()
+* delete_firewall_rule()
 
 #### Query API 
 * list_project_vms()
+* show_vm()
 
 ### Neutron API
 #### Operational API 
@@ -33,19 +39,20 @@
 * delete_network()
 * create_router()
 * delete_router()
-* create_firewall_rule()
-* delete_firewall_rule()
+* create_port()
+* delete_port()
 
 #### Query API 
 * list_networks()
 * list_routers()
+* list_ports()
 * show_topology()?
 
 ### Cinder API
 #### Operational API 
 * create_volume()
 * delete_volume()
-* take_snapshot()
+* create_snapshot()
 * delete_snapshot()
 
 #### Query API 
