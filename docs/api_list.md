@@ -8,11 +8,11 @@ my_vm = nova_client.default_create_vm(vm_name)
 ### Service Directory API
 #### Operational API 
 * create_service(service_name, endpoint, optional_args?)
-    return success/failure
+    return success OR failure
 * delete_service(service_name)
-    return success/failure
+    return success OR failure
 * update_service(service_name, config_options)
-    return success/failure
+    return success OR failure
 
 #### Query API 
 * list_services(filter=None)
@@ -28,9 +28,9 @@ my_vm = nova_client.default_create_vm(vm_name)
 * get_token(user_name, password)
     return keystone token for opening rest of clients for projects
 * add_user_to_project(user_name, project, token)
-    return success/failure
+    return success OR failure
 * remove_user_from_project(user_name, project, token) 
-    return success/failure
+    return success OR failure
 
 #### Query API 
 * list_projects(token)
@@ -41,16 +41,16 @@ my_vm = nova_client.default_create_vm(vm_name)
 * create_nova_client(project, keystone_token)
     return nova client for further operations
 * create_vm(vm_name, image, flavor, security_groups, key_name, nics)
-    return success/failure
+    return success OR failure
 * default_create_vm(vm_name)
-    return success/failure
+    return success OR failure
 * delete_vm(vm_name)
-    return success/failure
+    return success OR failure
 * attach_volume(vm_name, volume_name) 
-    return success/failure
+    return success OR failure
 
 #### Query API 
-* list_project_vms(project)
+* list_vms()
     return full list of vms, from all nova instances
 * show_vm(vm_name)
     return json blob of vm details (maybe optional args for specific details)
@@ -60,57 +60,84 @@ my_vm = nova_client.default_create_vm(vm_name)
 * create_neutron_client(project, keystone_token)
     return neutron client for further operations
 * create_network(network_name, subnet)
-    return success/failure
+    return success OR failure
 * delete_network(network_name)
-    return success/failure
+    return success OR failure
 * create_router(router_name, private_subnet, public_subnet)
-    return success/failure
+    return success OR failure
 * delete_router(router_name)
-    return success/failure
+    return success OR failure
 * create_port(port_name, vm_name, network_name)
-    return success/failure
+    return success OR failure
 * delete_port(port_name)
-    return success/failure
+    return success OR failure
 
 #### Query API 
 * list_networks()
-* list_routers()
-* list_ports()
+    return json list of networks
+* list_routers(network_name=ALL)
+    return json list of routers
+* list_ports(subnet=ALL)
+    return json list of ports 
 * show_topology()?
+    return json list of connections?
 
 ### Cinder API
 #### Operational API 
 * create_cinder_client(project, keystone_token)
-* create_volume()
-* delete_volume()
-* create_snapshot()
-* delete_snapshot()
+    return cinder client for further operations
+* create_volume(volume_name, size, initial_data)
+    return volume_url OR failure
+* delete_volume(volume_name)
+    return success OR failure
+* upload_volume(volume_name, volume_url)
+    return new_volume_url OR failure
+* create_snapshot(volume_name)
+    return volume_url OR failure
+* delete_snapshot(volume_name)
+    return success OR failure
 
 #### Query API 
 * list_volumes()
+    return json list of volumes
 * list_snapshots()
+    return json list of snapshots 
 
 ### Swift API
 #### Operational API 
 * create_swift_client(project, keystone_token)
-* create_container()
-* delete_container()
-* upload_object()
-* download_object()
-* delete_object()
+    return swift client for further operations OR failure
+* create_container(container_name, size, initial_data)
+    return container_url OR failure
+* delete_container(container_name)
+    return success OR failure
+* upload_container(container_name, container_url)
+    return new_container_url OR failure
+* upload_object(container_name, object_name)
+    return object_url OR failure
+* download_object(container_name, object_name)
+    return object OR failure
+* delete_object(container_name, object_name)
+    return success OR failure
 
 #### Query API
 * list_containers()
-* list_objects()
+    return json list of containers OR failure
+* list_objects(container_name)
+    return json list of objects OR failure
 
 ### Glance API
 #### Operational API 
 * create_glance_client(project, keystone_token)
-* upload_image()
-* delete_image()
+    return glance client for further operations OR failure
+* upload_image(image_name, image_url)
+    return new_image_url OR failure
+* delete_image(image_name)
+    return success OR failure
 
 #### Query API
 * list_images()
+    return json list of images OR failure
 
 TODO:
 
