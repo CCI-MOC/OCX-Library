@@ -1,0 +1,44 @@
+﻿
+Step 3 methods 
+
+## Login with your own credentials 
+proxychains python manage.py shell 
+nova = nvclient.Client(...)
+neutron = ntclient.Client(...)
+glance = glclient.CLient(...)
+
+## Create Private network
+
+bash: proxychains neutron --help | grep network | grep router 
+proxychains neutron net-create()
+
+
+## Create security group rule
+
+nova.security_groups.create(name, description) #create two default egress security rule
+nova.security_group_rules.create(parent_group_id, ip_protocol=None, from_port=None, to_port=None, cidr=None, group_id=None)
+
+## Add ssh key-pairs (either create a new one, or upload a public key)
+
+nova.keypairs.create(name, public_key = None)
+
+## Upload an image
+
+glance.images.create()
+nova.images.create(name,metadata= None)
+
+## Boot a VM on the right network with uploaded image, ssh key, security-group
+
+nova.servers.create(name, image, flavor, meta=None, files=None, reservation_id=None, min_count=None, 
+ 	max_count=None, security_groups=None, userdata=None, key_name=None, availability_zone=None, 
+ 	block_device_mapping=None, block_device_mapping_v2=None, nics=None, scheduler_hints=None, 
+ 	config_drive=None, disk_config=None, **kwargs)
+
+## Create a router for private network
+
+bash: proxychains neutron router-create()
+
+## Allocating a floating IP to VM
+
+nova.floating_ips.create(pool = None)
+nova.floating_ips_pool.list()
