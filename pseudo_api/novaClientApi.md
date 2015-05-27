@@ -4,7 +4,7 @@ endpoint has same username, password and tenant_name*/
 ```python
 function novaClientAPI(project_name, keystone_token_list):
     /*to use functionalities of nova API, we need to create a nova client first*/
-    For token in keystone_token_list
+    for token in keystone_token_list
         new_nova_client = create_nova_client(project_name,token)
         nova_client_list.add(new_nova_client)
     /*to get the list of VMs*/
