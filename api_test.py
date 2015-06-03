@@ -20,19 +20,19 @@ import api
 # for nova in nova_client_list:
 # 	print nova.flavors.list()
 
-url = 'http://140.247.152.207:5000/v2.0'
+# url = 'http://140.247.152.207:5000/v2.0'
 
-tenant_name ='admin'
-username = 'xuh'
-password = 'xuhang0507'
+# tenant_name ='admin'
+# username = 'xuh'
+# password = ''
 
-auth = v2.Password(auth_url=url,
-                   username=username,
-                   password=password,
-                   tenant_name=tenant_name)
+# auth = v2.Password(auth_url=url,
+#                    username=username,
+#                    password=password,
+#                    tenant_name=tenant_name)
 
-sess = session.Session(auth=auth)
+# sess = session.Session(auth=auth)
 
-nova = client.Client("2", session=sess,timeout=0)
+# nova = client.Client("2", session=sess,timeout=0)
 
-print nova.flavors.list()
+# print nova.flavors.list()
