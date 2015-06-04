@@ -1,6 +1,6 @@
 import phaseOneOCX
 # Socks
-url_list = ['http://140.247.152.150:5000/v2.0', 'http://140.247.152.35:5000/v2.0' ]
+url_list = ['http://140.247.152.150:5000/v2.0', 'http://140.247.152.35:5000/v2.0' , 'http://140.247.152.189:5000/v2.0']
 
 tenant_name ='admin'
 username = 'admin'
