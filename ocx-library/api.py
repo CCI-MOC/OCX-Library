@@ -42,10 +42,10 @@ def init_nova_clients(version, session_list):
 
 #myreturnval = myclient.myfunction(func arg list)
 
-def nova_service(nova_client_list,service):
-	for nova in nova_client_list:
-		service_object = getattr(nova,service)
-		print service_object
+#def nova_service(nova_client_list,service):
+#	for nova in nova_client_list:
+#		service_object = getattr(nova,service)
+#		print service_object
 		
 		
 def nova_service_version_2(nova_client_list,service):
