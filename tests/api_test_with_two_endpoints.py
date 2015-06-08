@@ -19,43 +19,94 @@ import pytest
 
 
 
-
+#Credentials 
 url_list = ['http://140.247.152.150:5000/v2.0', 'http://140.247.152.35:5000/v2.0' , 'http://140.247.152.189:5000/v2.0']
 
 tenant_name ='admin'
 username = 'admin'
 password = 'ocx'
 
+class TestSession:
+	session_list = api.init_sessions(username, password,tenant_name,url_list)
 
-session_list = api.init_sessions(username, password,tenant_name,url_list)
+class TestKeystone:
+	def test_user_list:
+		keystone_client_list = api.init_keystone_clients(username, password,tenant_name,url_list)
+		keystone_service_object_list = api.keystone_service(keystone_client_list,"users")
+		for keystone in keystone_service_object_list:
+			for member in keystone.list():
+				print member.name
+	def test_user_create:
+		pass
 
-#nova
-nova_client_list  = api.init_nova_clients('2', session_list)
-nova_service_object_list = api.nova_service_version_2(nova_client_list,"flavors")
-for service in nova_service_object_list:
-	print service.list()
+	def test_user_delete:
+		pass
 
-#keystone
-keystone_client_list = api.init_keystone_clients(username, password,tenant_name,url_list)
-keystone_service_object_list = api.keystone_service(keystone_client_list,"users")
-for keystone in keystone_service_object_list:
-	for member in keystone.list():
-		print member.name
+	def test_user_role_add:
+		pass
 
-#glance
-glance_client_list = api.init_glance_clients(keystone_client_list)
-glance_service_object_list = api.glance_service(glance_client_list,"images")
-for service in glance_service_object_list:
-	print list(service.list())[0]['name']
+	def test_user_role_remove:
+		pass
 
-#cinder
-cinder_client_list = api.init_cinder_clients(keystone_client_list)
-cinder_service_object_list = api.cinder_service(cinder_client_list,"volumes")
-for service in cinder_service_object_list:
-	print service.list()
+	def test_tenant_list:
+		keystone_client_list = api.init_keystone_clients(username, password,tenant_name,url_list)
+		keystone_service_object_list = api.keystone_service(keystone_client_list,"tenants")
+		for keystone in keystone_service_object_list:
+			for tenant in keystone.list():
+				print teant.name
+
+class TestNova:
+	def test_flavor_list:
+		nova_client_list  = api.init_nova_clients('2', session_list)
+		nova_service_object_list = api.nova_service(nova_client_list,"flavors")
+		for service in nova_service_object_list:
+			print service.list()
+	def test_image_list:
+		pass
+
+	def test_security_group:
+		pass
+
+	def test_fixed_ip:
+		pass
+
+	def test_floating_ip_pool:
+		pass
+
+	def test_floating_ip:
+		pass
+
+	def test_server_create:
+		pass
+
+	def test_ssh_keypairs_create:
+		pass 
+
+class TestGlance:	
+	def test_image_list:
+		glance_client_list = api.init_glance_clients(keystone_client_list)
+		glance_service_object_list = api.glance_service(glance_client_list,"images")
+		for service in glance_service_object_list:
+			print list(service.list())[0]['name']
+
+	def test_image_upload:
+		pass
+
+
+class TestCinder
+	def test_volumes_list:
+		cinder_client_list = api.init_cinder_clients(keystone_client_list)
+		cinder_service_object_list = api.cinder_service(cinder_client_list,"volumes")
+		for service in cinder_service_object_list:
+			print service.list()
 	
-#swift
-swift_client_list = api.init_swift_clients(keystone_client_list)
-swift_service_object_list = api.swift_service(swift_client_list,"head_account")
-for service in swift_service_object_list:
-	print service
+class TestSwift:
+	def test_head_account:
+		swift_client_list = api.init_swift_clients(keystone_client_list)
+		swift_service_object_list = api.swift_service(swift_client_list,"head_account")
+		for service in swift_service_object_list:
+			print service
+
+
+
+
