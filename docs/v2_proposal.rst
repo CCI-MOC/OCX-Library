@@ -19,8 +19,8 @@ Code control flow:
         + Retrieve the service clients stored in the user's running software 
         + Call the function with kwargs on the x service clients
 * Single call:
-    - Initialize the keystone client on your "home" keystone, and one client from the keystone of the provider of the service you would like to use (eventually using SAML for 2nd)
-    - Initialize service client with 2nd keystone client
+    - Initialize the keystone client on your "home" keystone, and one client from the keystone of the remote provider of the service you would like to use (eventually using SAML for 2nd)
+    - Initialize service client with remote keystone client
     - Call function on the underlying service
     
 * Once clients time out, we inform the user, and ask if they would like to re-initialize the clients
