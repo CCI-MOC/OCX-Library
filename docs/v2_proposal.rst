@@ -35,9 +35,9 @@ Necessary Functions:
     - call_services(service_client_dict, function, args, kwargs)
         + return aggregate_of_return_values
 * Single service
-    - init_keystone_client(home_auth_url, auth_url, user_name, password)
-        + return 2nd_keystone_client
-    - init_service_clients(keystone_client, service)
+    - init_keystone_client(home_auth_url, remote_auth_url, user_name, password)
+        + return remote_keystone_client
+    - init_service_client(remote_keystone_client, service)
         + return service_client 
     - call_service(service_client, function, args, kwargs)
         + return underlying_function_return 
